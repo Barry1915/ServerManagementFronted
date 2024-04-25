@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+import { title } from '@/settings'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -54,7 +55,6 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
   {
     path: '/example',
     component: Layout,
@@ -74,6 +74,80 @@ export const constantRoutes = [
         component: () => import('@/views/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
       }
+    ]
+  },
+  // {
+  //   path: '/syslog',
+  //   component: Layout,
+  //   redirect: '/syslog/server133',
+  //   name: 'Syslog',
+  //   meta: { title: '日志管理', icon: 'el-icon-s-help' },
+  //   children: [
+  //     {
+  //       path: 'server133',
+  //       name: 'server133',
+  //       component: () => import('@/views/syslog/server133'),
+  //       meta: { title: 'Server133', icon: 'table' }
+  //     },
+  //     {
+  //       path: 'server131',
+  //       name: 'server131',
+  //       component: () => import('@/views/syslog/server131'),
+  //       meta: { title: 'Server131', icon: 'tree' }
+  //     },
+
+  //   ]
+  // },
+
+  {
+    path: '/logmanage',
+    component: Layout,
+    redirect: '/logmanage/syslog',
+    name: 'logmanage',
+    meta: { title: '日志管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'syslog',
+        name: 'syslog',
+        component: () => import('@/views/logmanage/syslog/index'),
+        meta: { title: 'syslog', icon: 'table' },
+        children: [
+        {
+          path: 'server133',
+          name: 'server133',
+          component: () => import('@/views/logmanage/syslog/server133.vue'),
+          meta: { title: 'server133', icon: 'table' }
+        },
+        {
+          path: 'server131',
+          name: 'server131',
+          component: () => import('@/views/logmanage/syslog/server131.vue'),
+          meta: { title: 'server131', icon: 'table' }
+        }
+        ]
+      },
+      {
+        path: 'authlog',
+        name: 'authlog',
+        component: () => import('@/views/logmanage/authlog/'),
+        meta: { title: 'authlog', icon: 'tree' },
+        children: [
+          {
+            path: 'server133',
+            name: 'server133',
+            component: () => import('@/views/logmanage/authlog/server133.vue'),
+            meta: { title: 'server133', icon: 'table' }
+          },
+          {
+            path: 'server131',
+            name: 'server131',
+            component: () => import('@/views/logmanage/authlog/server131.vue'),
+            meta: { title: 'server131', icon: 'table' }
+          }
+          ]
+        
+      },
+
     ]
   },
 
