@@ -15,3 +15,4 @@ describe('Utils:validate', () => {
     expect(isExternal('dashboard')).toBe(false)
   })
 })
+
