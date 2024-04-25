@@ -112,6 +112,7 @@ export default {
   background-color: #f5f5f5; /* 添加背景色 */  
 }  
   
+
 .server-log-title {  
   font-family: 'Arial', sans-serif; /* 使用一个常见的无衬线字体 */  
   color: #333; /* 字体颜色 */  
