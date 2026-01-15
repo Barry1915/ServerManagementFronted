@@ -73,8 +73,9 @@ export async function updateServer(id: string, payload: UpsertServerPayload): Pr
     const idx = servers.findIndex((s) => s.id === id)
     if (idx < 0) throw new Error('服务器不存在')
     const now = dayjs().toISOString()
+    const current = servers[idx]!
     const updated: Server = {
-      ...servers[idx],
+      ...current,
       ...payload,
       tags: payload.tags || [],
       updatedAt: now,
